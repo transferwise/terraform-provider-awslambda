@@ -14,7 +14,7 @@ type providerConfig struct {
 	session *session.Session
 }
 
-// Provider - TransferWise RDS provider
+// Provider - AWS Lambda provider
 func Provider() terraform.ResourceProvider {
 	provider := &schema.Provider{
 		Schema: map[string]*schema.Schema{
