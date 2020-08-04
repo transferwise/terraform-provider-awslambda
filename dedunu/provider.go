@@ -42,7 +42,7 @@ func Provider() terraform.ResourceProvider {
 		},
 
 		ResourcesMap: map[string]*schema.Resource{
-			"awslambda_invocation": resourceUser(),
+			"awslambda_invocation": resourceAwsLambdaInvocation(),
 		},
 	}
 
