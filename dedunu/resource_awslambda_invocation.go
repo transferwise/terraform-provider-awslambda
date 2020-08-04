@@ -51,7 +51,7 @@ func resourceAwsLambdaInvocation() *schema.Resource {
 }
 
 func resourceAwsLambdaInvocationCreate(d *schema.ResourceData, meta interface{}) error {
-	conn := meta.(*AWSClient).lambdaconn
+	conn := meta.(*AWSClient).session
 
 	functionName := d.Get("function_name").(string)
 	qualifier := d.Get("qualifier").(string)
