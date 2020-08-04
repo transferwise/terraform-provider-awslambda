@@ -51,7 +51,7 @@ func resourceAwsLambdaInvocation() *schema.Resource {
 }
 
 func resourceAwsLambdaInvocationCreate(d *schema.ResourceData, meta interface{}) error {
-	config := m.(*providerConfig)
+	config := meta.(*providerConfig)
 
 	functionName := d.Get("function_name").(string)
 	qualifier := d.Get("qualifier").(string)
