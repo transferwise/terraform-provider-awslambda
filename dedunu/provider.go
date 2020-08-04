@@ -85,7 +85,7 @@ func Provider() terraform.ResourceProvider {
 		sess, err := awsbase.GetSession(awsbaseConfig)
 
 		if err != nil {
-			return nil, fmt.Errorf("error configuring TransferWise RDS provider: %w", err)
+			return nil, fmt.Errorf("error configuring AWS Lamda provider: %w", err)
 		}
 
 		config := &providerConfig{
