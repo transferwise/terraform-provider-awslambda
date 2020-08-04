@@ -1,4 +1,4 @@
-module dedunu/terraform-provider-awslambda
+module github.com/dedunu/terraform-provider-awslambda
 
 go 1.13
 
