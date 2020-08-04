@@ -51,13 +51,14 @@ func resourceAwsLambdaInvocation() *schema.Resource {
 }
 
 func resourceAwsLambdaInvocationCreate(d *schema.ResourceData, meta interface{}) error {
-	conn := meta.(*AWSClient).session
+	config := m.(*providerConfig)
 
 	functionName := d.Get("function_name").(string)
 	qualifier := d.Get("qualifier").(string)
 	input := []byte(d.Get("input").(string))
 
-	res, err := conn.Invoke(&lambda.InvokeInput{
+	svc := lambda.New(config.session)
+	res, err := svc.Invoke(&lambda.InvokeInput{
 		FunctionName:   aws.String(functionName),
 		InvocationType: aws.String(lambda.InvocationTypeRequestResponse),
 		Payload:        input,
