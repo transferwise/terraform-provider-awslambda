@@ -34,6 +34,7 @@ func resourceAwsLambdaInvocation() *schema.Resource {
 				Type:         schema.TypeString,
 				Required:     true,
 				ValidateFunc: validation.StringIsJSON,
+				Sensitive:    true,
 			},
 
 			"invoke_on_update": {
