@@ -41,16 +41,21 @@ func Provider() terraform.ResourceProvider {
 	}
 
 	provider.ConfigureFunc = func(d *schema.ResourceData) (interface{}, error) {
-		return providerConfigure(d)
+		return providerConfigure(d, provider.TerraformVersion)
 	}
 
 	return provider
 }
 
-func providerConfigure(d *schema.ResourceData) (interface{}, error) {
+func providerConfigure(d *schema.ResourceData, terraformVersion string) (interface{}, error) {
 	sess, err := awsbase.GetSession(&awsbase.Config{
 		Profile: d.Get("profile").(string),
 		Region:  d.Get("region").(string),
+		UserAgentProducts: []*awsbase.UserAgentProduct{
+			{Name: "APN", Version: "1.0"},
+			{Name: "HashiCorp", Version: "1.0"},
+			{Name: "Terraform", Version: terraformVersion, Extra: []string{"+https://www.terraform.io"}},
+		},
 	})
 	if err != nil {
 		return nil, fmt.Errorf("error configuring Terraform AWS Provider: %w", err)
