@@ -14,13 +14,12 @@ $ cp terraform-provider-awslambda ~/.terraform.d/plugins
 
 ## Usage
 
-Defining the provider. This provider only supports three variables. They are `region`, `profile`, and `role_arn`.
+Defining the provider. This provider only supports `region` and `profile` variables.
 
 ```terraform
 provider "awslambda" {
   region   = "us-west-1"
   profile  = "default"
-  role_arn = "arn:aws:iam::account-id:role/role-name-with-path"
 }
 ```
 

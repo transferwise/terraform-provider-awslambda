@@ -1,7 +1,6 @@
 provider "awslambda" {
   region   = "us-west-1"
   profile  = "default"
-  role_arn = "arn:aws:iam::account-id:role/role-name-with-path"
 }
 
 resource "aws_lambda_invocation" "example" {
